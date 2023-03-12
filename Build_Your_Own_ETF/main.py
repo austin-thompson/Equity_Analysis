@@ -55,17 +55,17 @@
 			#Apply function to the data.
 			distmap = normal_dist(x,mean,sd)
 			distmap = (pdf/lendf)*weight_max
-
-
 	#			target_idx = index
 				targetdf = df[df.param == 2]
 				if target_df.index.size == 1
 					target_idx = targetdf.param.index.item()
 				else
-					target_idx = round(np.median(targetdf.param.index.values))			
+					target_idx = round(np.median(targetdf.param.index.values))		
+	#			calls param module
 			param_column = param_module(distmap,target_idx)# centers dist map to target while keeping length of column len(df)
 			df.insert(df.columns.size-1, param+"W", param_column)
 		return df
+
 	def solver(df, riskdist, budget):
 
 		for item in riskdist
