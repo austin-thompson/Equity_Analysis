@@ -22,45 +22,70 @@
 	def update():
 		tickers_all = gt.get_tickers(AMEX=False)
 		tickers = yf.Tickers(tickers_all)
-		df = pd.DataFrame(tickers)
+		for ticker in tickers:
+			df.append(ticker.fast_info)
 		df.to_csv #to do: SAVE TO LOCATION
 		return df
-	def marketcap_module(df, params):
-		# Iterate through df and assign CAP weight based on distmap from target
-		for item in tickers:
-			df.item = 
-		return df
-	def dividend_module(df, params):
-		# Iterate through df and assign DIV weight based on distmap from target
-		for item in tickers:
-			df
-		return df
-	def price_to_earnings_module(df, params):
+	def param_module(dist, target_index):
 		# Iterate through df and assign PE weight based on distmap from target
-		for item in tickers:
+		column_weight = []
+		dist_middle = len(dist)/2
+		for item in len(dist):
+			weight_score = dist[abs(dist_middle - abs(item_index - target_index))]
 			# gaussiandist out from target applying outward
 			# append new column
-			df=df_with_weight
-		return df
+			column_weight.append(weight_score)
+		return column_weight
 #                     algos & bus
 	def controller(params, df):
+		df.index.size
+		for param in params
+			targetvalue = params[param][0]
+			weight_max =  params[param][1]# this is target but formatted
+			df_length = len(df)*2
+	#			distmap = [gauss*W]
+			x = np.linspace(1,df_length,df_length)
+			#Creating a Function.
+			def normal_dist(x , mean , sd):
+				prob_density = (np.pi*sd) * np.exp(-0.5*((x-mean)/sd)**2)
+				return prob_density
+			#Calculate mean and Standard deviation.
+			mean = np.mean(x)
+			sd = np.std(x)
+			#Apply function to the data.
+			distmap = normal_dist(x,mean,sd)
+			distmap = (pdf/lendf)*weight_max
 
-		for item in params
-			item.distmap = np.array[gaussiandist(len(df)]# define this based on gaussian dist
-			item.weight_max =  item(1)*item(2)# this is target but formatted
-			item.target  = item(1)# used in final solver
-		df = module(df,params)
-		df = price_to_earnings_module(df,params)
-		df = dividend_module(df,params)
 
-		# solver?????
-	def solver(params, df):
-		
+	#			target_idx = index
+				targetdf = df[df.param == 2]
+				if target_df.index.size == 1
+					target_idx = targetdf.param.index.item()
+				else
+					target_idx = round(np.median(targetdf.param.index.values))			
+			param_column = param_module(distmap,target_idx)# centers dist map to target while keeping length of column len(df)
+			df.insert(df.columns.size-1, param+"W", param_column)
+		return df
+	def solver(df, riskdist, budget):
+
+		for item in riskdist
+			(item*budget)/df.(itemno).price=shares #calc shares
+			shares_column.append(shares) #add column with shares
+		df.append(shares_column)
+		df.column.sort(desc) 
+		for item in df
+			if item.shares >=1
+				etf_column = item.allinfo()
+			else
+				break
+		return etf_column
+
+		#output is df of length len(dist) ordered by shares	
 #                     run
 	def run():
 	
 		#                  input
-		test_params = {'CAP':[100000000,6],'DIV':[.2,4],'PE':[60,10]}
+		test_params = {'CAP':[100000000,4],'DIV':[.2,3],'PE':[60,3]}
 		#                  update
 		if csv_date != today
 			df = update()
@@ -68,10 +93,13 @@
 		df = pd.read_csv("data.csv")
 
 		#                 controller
-		controller(params, df)
-		# slover??
+		#make params a dataframe
+		df = controller(params, df)
+		riskdist = [60,20,10,5,2.5,2.5]
+		budget = 10000
+		etf_column = solver(df,riskdist,budget)
 
-		return df
+		return etf_column
 
 	
 
