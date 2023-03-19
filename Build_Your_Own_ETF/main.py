@@ -1,15 +1,13 @@
-
-	#version1
-		#user input (defines which parameters to use)
-		#something that runs the necessary modules
-		#module() (gets list)
-		#module(n)( gets list)(n)
-		#returns final list
-		#display list to user
-	#version2
-		# features
-		# update gets all needed data without needing a key so as not to get blacklisted or timed-out
-		#
+#Build_Your_Own_ETF version3 
+		# progress notes
+			# controller: calls param module, creates vector based on a normal gauss dist thats scaled to the input magnitude 
+				#notes: close to complete the creation of the dist vector has been tested
+				#need to finish and test param module before end to end testing can be done
+			# param module: frame work done but not tested or completed
+				#need to unit test assigning dist values based on the index difference provided by controller
+				#need to create sample inpur params to unit test
+			# update: need to incorporate austins progress
+			# solver:
 #                     import
 import pandas as pd
 import numpy as np
@@ -18,7 +16,7 @@ import yfinance as yf
 from get_all_tickers import get_tickers as gt
 
 
-#                     utils
+#                     utils ****update()TO BE CHANGED*****
 def update():
 	tickers_all = gt.get_tickers(AMEX=False)
 	tickers = yf.Tickers(tickers_all)
