@@ -11,9 +11,9 @@
 #                     import
 import pandas as pd
 import numpy as np
-import requests
-import yfinance as yf
-from get_all_tickers import get_tickers as gt
+# import requests
+# import yfinance as yf
+# from get_all_tickers import get_tickers as gt
 
 
 #                     utils ****update()TO BE CHANGED*****
@@ -25,23 +25,37 @@ def update():
 		df.append(ticker.fast_info)
 	df.to_csv #to do: SAVE TO LOCATION
 	return df
-def param_module(dist, target_index):
-		# Iterate through df and assign PE weight based on distmap from target
+def param_module(distmap, target_idx):
+#			******param module test******
+# Iterate through df and assign PE weight based on distmap from target
 	column_weight = []
-	dist_middle = len(dist)/2
-	for item in len(dist):
-		weight_score = dist[abs(dist_middle - abs(item.index.item() - target_index))]
+	dist_middle = len(distmap)/2
+
+	for indexdf in range(int(dist_middle)):
+		weight_score = distmap[abs(int(dist_middle) - abs(indexdf - target_idx))]
 			# gaussiandist out from target applying outward
 			# append new column
 		column_weight.append(weight_score)
 	return column_weight
+def score_module(params,df):
+#			******param module test******
+# Iterate through df and assign PE weight based on distmap from target
+	column_score = []
+	for indexdf in range(len(df)):
+		score = 0
+		for param in params:
+			score += df.at[indexdf,param+"W"]
+			# add param+W
+			# append new column
+		column_score.append(score)
+	return column_score
 #                     algos & bus
 def normal_dist(x,mean,sd):
 	prob_density = (np.pi*sd) * np.exp(-0.5*((x-mean)/sd)**2)
 	return prob_density
 
 def controller(params, df):
-	df.index.size
+	scale_size = len(df)*2
 	for param in params:
 		targetvalue = params[param][0]
 		weight_max =  params[param][1]# this is target but formatted
@@ -55,53 +69,58 @@ def controller(params, df):
 		sd = np.std(x)
 			#Apply function to the data.
 		distmap = normal_dist(x,mean,sd)
-		distmap = (distmap/df_length)*weight_max
-	#			target_idx = index
-		target_df = df[df.param == 2]
+		distmap = (distmap/scale_size)*weight_max
+		df = df.sort_values(by=[param])
+		df = df.reset_index(drop=True)
+		target_df = df[df[param]==targetvalue] # finds target index(s)
+		# gets single index or takes the median index
 		if target_df.index.size == 1:
-			target_idx = target_df.param.index.item()
+			target_idx = target_df[param].index.item()
 		else:
-			target_idx = round(np.median(target_df.param.index.values))		
+			target_idx = round(np.median(target_df[param].index.values))		
 	#			calls param module
-			param_column = param_module(distmap,target_idx)# centers dist map to target while keeping length of column len(df)
-			df.insert(df.columns.size-1, param+"W", param_column)
-		return df
+		param_column = param_module(distmap,target_idx)# centers dist map to target while keeping length of column len(df)
+		df.insert(df.columns.size-1, param+"W", param_column)
 
-	def solver(df, riskdist, budget):
+	score_column = score_module(params,df)
+	df.insert(df.columns.size-1, "SCORE", score_column)
 
-		for item in riskdist:
-			(item*budget)/df.(itemno).price=shares #calc shares
-			shares_column.append(shares) #add column with shares
-		df.append(shares_column)
-		df.column.sort(desc) 
-		for item in df:
-			if item.shares >=1:
-				etf_column = item.allinfo()
-			else:
-				break
-		return etf_column
+	return df
+
+def solver(df, riskdist, budget):
+	df = df.sort_values(by=['SCORE'],ascending=True)
+	df = df.reset_index(drop=True)
+	shares_column = []
+	for idx in range(len(riskdist)):
+		shares = (riskdist[idx]*budget)/df.at[idx,"PRICE"] #calc shares
+		shares_column.append(shares) #add column with shares
+	df.insert(df.columns.size-1, "SHARES", shares_column)
+	# df = df.sort_values(by=['SHARES'])
+	# df = df.reset_index(drop=True)
+	return df
 
 		#output is df of length len(dist) ordered by shares	
 #                     run
-	def run():
+def run():
 	
-		#                  input
-		test_params = {'CAP':[100000000,4],'DIV':[.2,3],'PE':[60,3]}
-		#                  update
-		if csv_date != today:
-			df = update()
-		else:
-			df = pd.read_csv("data.csv")
+	#                  input
+	params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
+	df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20],'PRICE':[50,60,80,30,20]})
+	# #                  update
+	# if csv_date != today:
+	# 	df = update()
+	# else:
+	# 	df = pd.read_csv("data.csv")
 
-		#                 controller
-		#make params a dataframe
-		df = controller(params, df)
-		riskdist = [60,20,10,5,2.5,2.5]
-		budget = 10000
-		etf_column = solver(df,riskdist,budget)
+	#                 controller
+	#make params a dataframe
+	df = controller(params, df)
+	riskdist = [.60,.25,.15,0,0]
+	budget = 10000
+	etf_column = solver(df,riskdist,budget)
 
-		return etf_column
+	return etf_column
 
 	
 
-run()
+print(run())
