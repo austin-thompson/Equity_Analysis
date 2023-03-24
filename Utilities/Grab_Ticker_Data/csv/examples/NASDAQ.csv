@@ -574,8 +574,8 @@ AZYO,Aziyo Biologics Inc,USA,NASDAQ,USD,Common Stock,US05479K1060
 BABX,GraniteShares 1.75x Long BABA Daily ETF,USA,NASDAQ,USD,ETF,
 BAC-PQ,Bank of America Corporation,USA,NASDAQ,USD,Common Stock,
 BACK,IMAC Holdings Inc,USA,NASDAQ,USD,Common Stock,
-BAER,"Bridger Aerospace Group Holdings, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,
-BAERW,"Bridger Aerospace Group Holdings, Inc. Warrant",USA,NASDAQ,USD,Common Stock,
+BAER,Bridger Aerospace Group Holdings Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
+BAERW,Bridger Aerospace Group Holdings Inc. Warrant,USA,NASDAQ,USD,Common Stock,
 BAFN,Bayfirst Financial Corp,USA,NASDAQ,USD,Common Stock,US07279B1044
 BAND,Bandwidth Inc,USA,NASDAQ,USD,Common Stock,US05988J1034
 BANF,BancFirst Corporation,USA,NASDAQ,USD,Common Stock,US05945F1030
@@ -631,8 +631,8 @@ BFI,Burgerfi International Inc,USA,NASDAQ,USD,Common Stock,US12122L1017
 BFIIW,BurgerFi International LLC,USA,NASDAQ,USD,Common Stock,
 BFIN,BankFinancial Corporation,USA,NASDAQ,USD,Common Stock,US06643P1049
 BFIT,Global X Health & Wellness ETF,USA,NASDAQ,USD,ETF,US37954Y7985
-BFRG,"Bullfrog AI Holdings, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,
-BFRGW,"Bullfrog AI Holdings, Inc. Warrants",USA,NASDAQ,USD,Common Stock,
+BFRG,Bullfrog AI Holdings Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
+BFRGW,Bullfrog AI Holdings Inc. Warrants,USA,NASDAQ,USD,Common Stock,
 BFRI,Biofrontera Inc,USA,NASDAQ,USD,Common Stock,US09077D1000
 BFRIW,Biofrontera Inc. Warrants,USA,NASDAQ,USD,Common Stock,
 BFST,Business First Bancshares Inc,USA,NASDAQ,USD,Common Stock,US12326C1053
@@ -1727,7 +1727,7 @@ ESTA,Establishment Labs Holdings Inc,USA,NASDAQ,USD,Common Stock,VGG312491084
 ET-PC,Energy Transfer LP,USA,NASDAQ,USD,Common Stock,
 ET-PD,Energy Transfer LP,USA,NASDAQ,USD,Common Stock,
 ET-PE,Energy Transfer LP,USA,NASDAQ,USD,Common Stock,
-ETAO,"Etao International Co., Ltd. Ordinary Shares",USA,NASDAQ,USD,Common Stock,
+ETAO,Etao International Co. Ltd. Ordinary Shares,USA,NASDAQ,USD,Common Stock,
 ETNB,89bio Inc,USA,NASDAQ,USD,Common Stock,US2825591033
 ETON,Eton Pharmaceuticals Inc,USA,NASDAQ,USD,Common Stock,US29772L1089
 ETSY,Etsy Inc,USA,NASDAQ,USD,Common Stock,US29786A1060
@@ -2463,7 +2463,7 @@ HROWL,Harrow Health Inc. 8.625% Senior Notes due 2026,USA,NASDAQ,USD,Common Stoc
 HROWM,Harrow Health Inc. 11.875% Senior Notes due 2027,USA,NASDAQ,USD,Common Stock,
 HRTX,Heron Therapeuti,USA,NASDAQ,USD,Common Stock,US4277461020
 HRZN,Horizon Technology Finance,USA,NASDAQ,USD,Common Stock,US44045A1025
-HSAI,"Hesai Group American Depositary Share, each ADS represents one Class B ordinary share",USA,NASDAQ,USD,Common Stock,
+HSAI,Hesai Group American Depositary Share each ADS represents one Class B ordinary share,USA,NASDAQ,USD,Common Stock,
 HSCS,Heart Test Laboratories Inc. Common Stock,USA,NASDAQ,USD,Common Stock,US42254E1047
 HSCSW,Heart Test Laboratories Inc. Warrant,USA,NASDAQ,USD,Common Stock,
 HSDT,Helius Medical Technologies Inc Class A,USA,NASDAQ,USD,Common Stock,US42328V6039
@@ -3303,7 +3303,7 @@ MGNX,MacroGenics Inc,USA,NASDAQ,USD,Common Stock,US5560991094
 MGOL,MGO Global Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
 MGPI,MGP Ingredients Inc,USA,NASDAQ,USD,Common Stock,US55303J1060
 MGRC,McGrath RentCorp,USA,NASDAQ,USD,Common Stock,US5805891091
-MGRX,"Mangoceuticals, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,
+MGRX,Mangoceuticals Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
 MGTA,Magenta Therapeutics Inc,USA,NASDAQ,USD,Common Stock,US55910K1088
 MGTX,MeiraGTx Holdings PLC,USA,NASDAQ,USD,Common Stock,KYG596651029
 MGYR,Magyar Bancorp Inc,USA,NASDAQ,USD,Common Stock,US55977T2087
@@ -3343,7 +3343,7 @@ MLGO,MicroAlgo Inc.,USA,NASDAQ,USD,Common Stock,
 MLKN,MillerKnoll Inc,USA,NASDAQ,USD,Common Stock,US6005441000
 MLTX,MoonLake Immunotherapeutics,USA,NASDAQ,USD,Common Stock,
 MLVF,Malvern Bancorp Inc,USA,NASDAQ,USD,Common Stock,US5614091032
-MLYS,"Mineralys Therapeutics, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,
+MLYS,Mineralys Therapeutics Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
 MMAT,Meta Materials Inc,USA,NASDAQ,USD,Common Stock,US59134N1046
 MMLP,Martin Midstream Partners LP,USA,NASDAQ,USD,Common Stock,US5733311055
 MMMB,MamaMancini's Holdings Inc,USA,NASDAQ,USD,Common Stock,US56146T1034
@@ -3534,7 +3534,7 @@ NEXT,Nextdecade Corp,USA,NASDAQ,USD,Common Stock,US65342K1051
 NFBK,Northfield Bancorp Inc,USA,NASDAQ,USD,Common Stock,US66611T1088
 NFE,New Fortress Energy LLC,USA,NASDAQ,USD,Common Stock,US6443931000
 NFLX,Netflix Inc,USA,NASDAQ,USD,Common Stock,US64110L1061
-NFTG,"The NFT Gaming Company, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,
+NFTG,The NFT Gaming Company Inc. Common Stock,USA,NASDAQ,USD,Common Stock,
 NFTY,First Trust India NIFTY 50 Equal Weight ETF,USA,NASDAQ,USD,ETF,US33737J8027
 NFYS-UN,Enphys Acquisition Corp.,USA,NASDAQ,USD,Common Stock,
 NGM,NGM Biopharmaceuticals Inc,USA,NASDAQ,USD,Common Stock,US62921N1054
@@ -3788,7 +3788,7 @@ OPRT,Oportun Financial Corp,USA,NASDAQ,USD,Common Stock,US68376D1046
 OPRX,OPTIMIZERx Corp,USA,NASDAQ,USD,Common Stock,US68401U2042
 OPT,Opthea Ltd,USA,NASDAQ,USD,Common Stock,US68386J2087
 OPTN,OptiNose,USA,NASDAQ,USD,Common Stock,US68404V1008
-OPXS,"Optex Systems Holdings, Inc. Common Stock",USA,NASDAQ,USD,Common Stock,US68384X2099
+OPXS,Optex Systems Holdings Inc. Common Stock,USA,NASDAQ,USD,Common Stock,US68384X2099
 ORGN,Origin Materials Inc,USA,NASDAQ,USD,Common Stock,US68622D1063
 ORGNW,Origin Materials Inc Warrant,USA,NASDAQ,USD,Common Stock,US68622D1147
 ORGO,Organogenesis Holdings Inc,USA,NASDAQ,USD,Common Stock,US68621F1021
@@ -4160,7 +4160,7 @@ PTEN,Patterson-UTI Energy Inc,USA,NASDAQ,USD,Common Stock,US7034811015
 PTF,Invesco DWA Technology Momentum ETF,USA,NASDAQ,USD,ETF,US46137V8110
 PTGX,Protagonist Therapeutics Inc,USA,NASDAQ,USD,Common Stock,US74366E1029
 PTH,Invesco DWA Healthcare Momentum ETF,USA,NASDAQ,USD,ETF,US46137V8524
-PTHRU,"Pono Capital Three, Inc. Unit",USA,NASDAQ,USD,Common Stock,
+PTHRU,Pono Capital Three Inc. Unit,USA,NASDAQ,USD,Common Stock,
 PTIX,Protagenic Therapeutics,USA,NASDAQ,USD,Common Stock,US74365N1037
 PTIXW,Protagenic Therapeutics Inc,USA,NASDAQ,USD,Common Stock,
 PTLO,Portillo's Inc,USA,NASDAQ,USD,Common Stock,US73642K1060
@@ -4311,7 +4311,7 @@ RCII,Rent-A-Center Inc,USA,NASDAQ,USD,Common Stock,US76009N1000
 RCIIX,Resource Credit Income Fund Class I Shar,USA,NASDAQ,USD,FUND,
 RCIWX,Resource Credit Income Fund Class W Shar,USA,NASDAQ,USD,FUND,
 RCKT,Rocket Pharmaceuticals Inc,USA,NASDAQ,USD,Common Stock,US77313F1066
-RCKTW,"Rocket Pharmaceuticals, Inc. Warrant",USA,NASDAQ,USD,Common Stock,
+RCKTW,Rocket Pharmaceuticals Inc. Warrant,USA,NASDAQ,USD,Common Stock,
 RCKY,Rocky Brands Inc,USA,NASDAQ,USD,Common Stock,US7745151008
 RCLF,Rosecliff Acquisition Corp I,USA,NASDAQ,USD,Common Stock,US77732R1032
 RCLFU,Rosecliff Acquisition I Corp,USA,NASDAQ,USD,Common Stock,US77732R2022
@@ -5666,8 +5666,8 @@ YOTAR,Yotta Acquisition Corporation Right,USA,NASDAQ,USD,Common Stock,
 YOTAU,Yotta Acquisition Corp Unit,USA,NASDAQ,USD,Common Stock,US98741Y2028
 YOTAW,Yotta Acquisition Corporation Warrant,USA,NASDAQ,USD,Common Stock,
 YQ,17 Education Technology Group Inc,USA,NASDAQ,USD,Common Stock,US81807M2052
-YS,"YS Biopharma Co., Ltd. Ordinary Shares",USA,NASDAQ,USD,Common Stock,
-YSBPW,"YS Biopharma Co., Ltd. Warrants",USA,NASDAQ,USD,Common Stock,
+YS,YS Biopharma Co. Ltd. Ordinary Shares,USA,NASDAQ,USD,Common Stock,
+YSBPW,YS Biopharma Co. Ltd. Warrants,USA,NASDAQ,USD,Common Stock,
 YTEN,Yield10 Bioscience Inc,USA,NASDAQ,USD,Common Stock,US98585K8624
 YTRA,Yatra Online Inc,USA,NASDAQ,USD,Common Stock,KYG983381099
 YVR,Liquid Media Group Ltd,USA,NASDAQ,USD,Common Stock,CA53634Q2045

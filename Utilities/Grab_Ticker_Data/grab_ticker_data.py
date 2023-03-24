@@ -3,6 +3,10 @@ import json
 import pandas as pd
 import pandas_datareader as web
 import requests
+from datetime import date
+from IPython.display import display
+
+####################################################################
 
 """
 returns metadata for a specific exchange
@@ -22,18 +26,19 @@ def get_exchange_data(key, exchange="NYSE"):
 	
 	return exchange_data
 
-
-
+####################################################################
 
 """
 PLACEHOLDER
 """
 def main():
 	# parameters
-	exchange = "NYSE"
+	exchange = "NYSE2"
 	api_key = open("config/api_token.txt").read() # define this api name better
 	raw_data_location = "csv/raw_data/raw_data.csv"
-	result_set_location = "csv/result_set/result_set.csv"
+	result_set_location = "csv/result_set/result_set_" + exchange + "_" + str(date.today()) + ".csv" # replace with formatted string
+
+	print(result_set_location)
 
 	#### UNCOMMENT BELOW CODE FOR LIVE TICKER SYMBOL LIST GENERATION FOR SELECTED EXCHANGE
 	# raw_data = get_exchange_data(api_key, exchange) #change api_key to better name above
@@ -41,7 +46,7 @@ def main():
 	# raw_data = pd.read_csv(raw_data_location)
 	
 	#### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-	raw_data = pd.read_csv("csv/raw_data/test_short.csv") 
+	raw_data = pd.read_csv("csv/raw_data/test_short_nasdaq.csv") 
 
 	list_of_ticker_symbols_by_exchange = list(raw_data["Code"])
 	print("BEFORE DELETE: ", list_of_ticker_symbols_by_exchange)
@@ -68,16 +73,20 @@ def main():
 	print("AFTER DELETE: ",list_of_ticker_symbols_by_exchange)
 	
 	df=pd.concat(market_data, axis=0)
-	df["tickerSymbol"] = list_of_ticker_symbols_by_exchange
+	df.insert(0, "tickerSymbol", list_of_ticker_symbols_by_exchange)
+	df.index = range(0, len(list_of_ticker_symbols_by_exchange), 1)
 
 	df.to_csv(result_set_location, encoding="utf-8", index=False)
 
 	print("Data Frame Successfully saved to:" , result_set_location)
+	display(df)
 
+####################################################################
 
 """
 PLACEHOLDER
 """
 main()
 
+####################################################################
 
