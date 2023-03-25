@@ -33,20 +33,19 @@ PLACEHOLDER
 """
 def main():
 	# parameters
-	exchange = "NYSE2"
+	exchange = "NYSE"
 	api_key = open("config/api_token.txt").read() # define this api name better
 	raw_data_location = "csv/raw_data/raw_data.csv"
 	result_set_location = "csv/result_set/result_set_" + exchange + "_" + str(date.today()) + ".csv" # replace with formatted string
 
-	print(result_set_location)
-
+	# change csv calls to leverage dataframes instead
 	#### UNCOMMENT BELOW CODE FOR LIVE TICKER SYMBOL LIST GENERATION FOR SELECTED EXCHANGE
-	# raw_data = get_exchange_data(api_key, exchange) #change api_key to better name above
-	# raw_data.to_csv(raw_data_location, encoding="utf-8", index=False) 
-	# raw_data = pd.read_csv(raw_data_location)
+	raw_data = get_exchange_data(api_key, exchange) #change api_key to better name above
+	raw_data.to_csv(raw_data_location, encoding="utf-8", index=False) 
+	raw_data = pd.read_csv(raw_data_location)
 	
 	#### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-	raw_data = pd.read_csv("csv/raw_data/test_short_nasdaq.csv") 
+	# raw_data = pd.read_csv("csv/raw_data/test_short_nasdaq.csv") 
 
 	list_of_ticker_symbols_by_exchange = list(raw_data["Code"])
 	print("BEFORE DELETE: ", list_of_ticker_symbols_by_exchange)
@@ -75,11 +74,15 @@ def main():
 	df=pd.concat(market_data, axis=0)
 	df.insert(0, "tickerSymbol", list_of_ticker_symbols_by_exchange)
 	df.index = range(0, len(list_of_ticker_symbols_by_exchange), 1)
+	
+	df = df.loc[:, ["tickerSymbol", "marketCap", "trailingAnnualDividendYield", "trailingPE"]]
 
-	df.to_csv(result_set_location, encoding="utf-8", index=False)
+	# df.to_csv(result_set_location, encoding="utf-8", index=False)
 
-	print("Data Frame Successfully saved to:" , result_set_location)
+	# print("Data Frame Successfully saved to:" , result_set_location)
 	display(df)
+
+	return df
 
 ####################################################################
 
