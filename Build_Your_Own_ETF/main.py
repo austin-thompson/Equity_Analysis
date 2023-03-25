@@ -1,4 +1,4 @@
-#Build_Your_Own_ETF version3 
+#Build_Your_Own_ETF version1 
 		# progress notes
 			# controller: calls param module, creates vector based on a normal gauss dist thats scaled to the input magnitude 
 				#notes: close to complete the creation of the dist vector has been tested
@@ -7,15 +7,13 @@
 				#need to unit test assigning dist values based on the index difference provided by controller
 				#need to create sample inpur params to unit test
 			# update: need to incorporate austins progress
-			# solver:
+			# solver: 
 #                     import
 import pandas as pd
 import numpy as np
 # import requests
-# import yfinance as yf
+import yfinance as yf
 # from get_all_tickers import get_tickers as gt
-
-
 #                     utils ****update()TO BE CHANGED*****
 def update():
 	tickers_all = gt.get_tickers(AMEX=False)
@@ -49,7 +47,7 @@ def score_module(params,df):
 			# append new column
 		column_score.append(score)
 	return column_score
-#                     algos & bus
+#                     algos 
 def normal_dist(x,mean,sd):
 	prob_density = (np.pi*sd) * np.exp(-0.5*((x-mean)/sd)**2)
 	return prob_density
@@ -88,7 +86,7 @@ def controller(params, df):
 	return df
 
 def solver(df, riskdist, budget):
-	df = df.sort_values(by=['SCORE'],ascending=True)
+	df = df.sort_values(by=['SCORE'],ascending=False)
 	df = df.reset_index(drop=True)
 	shares_column = []
 	for idx in range(len(riskdist)):
@@ -102,25 +100,19 @@ def solver(df, riskdist, budget):
 		#output is df of length len(dist) ordered by shares	
 #                     run
 def run():
-	
 	#                  input
 	params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
 	df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20],'PRICE':[50,60,80,30,20]})
-	# #                  update
+	riskdist = [.6,.25,.15,0,0]
+	budget = 10000
+	#                  update
 	# if csv_date != today:
 	# 	df = update()
 	# else:
 	# 	df = pd.read_csv("data.csv")
-
 	#                 controller
-	#make params a dataframe
-	df = controller(params, df)
-	riskdist = [.60,.25,.15,0,0]
-	budget = 10000
+	# make params a dataframe
+	df = controller(params, df)	
 	etf_column = solver(df,riskdist,budget)
-
 	return etf_column
-
-	
-
-print(run())
+run()
