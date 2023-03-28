@@ -70,7 +70,7 @@ def controller(params, df):
 		distmap = (distmap/scale_size)*weight_max
 		df = df.sort_values(by=[param])
 		df = df.reset_index(drop=True)
-		target_df = df[df[param]==targetvalue] # finds target index(s)
+		target_df = df.iloc[(df[param]-targetvalue).abs().argsort()[:2]] # finds target index(s)
 		# gets single index or takes the median index
 		if target_df.index.size == 1:
 			target_idx = target_df[param].index.item()
@@ -90,8 +90,10 @@ def solver(df, riskdist, budget):
 	df = df.reset_index(drop=True)
 	shares_column = []
 	for idx in range(len(riskdist)):
-		shares = (riskdist[idx]*budget)/df.at[idx,"PRICE"] #calc shares
+		shares = (riskdist[idx]*budget)/df.at[idx,"price"] #calc shares
 		shares_column.append(shares) #add column with shares
+	for idx in range(len(df)-len(riskdist)):
+		shares_column.append(0)
 	df.insert(df.columns.size-1, "SHARES", shares_column)
 	# df = df.sort_values(by=['SHARES'])
 	# df = df.reset_index(drop=True)
@@ -99,20 +101,15 @@ def solver(df, riskdist, budget):
 
 		#output is df of length len(dist) ordered by shares	
 #                     run
-def run():
+def score(params,df,riskdist,budget):
 	#                  input
-	params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
-	df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20],'PRICE':[50,60,80,30,20]})
-	riskdist = [.6,.25,.15,0,0]
-	budget = 10000
-	#                  update
-	# if csv_date != today:
-	# 	df = update()
-	# else:
-	# 	df = pd.read_csv("data.csv")
-	#                 controller
-	# make params a dataframe
+	# params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
+	# df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20],'PRICE':[50,60,80,30,20]})
+	# riskdist = [.6,.25,.15,0,0]
+	# budget = 10000
 	df = controller(params, df)	
 	etf_column = solver(df,riskdist,budget)
 	return etf_column
-run()
+def load_market():
+	df = pd.read_csv('EXAMPLE.csv')
+	return df

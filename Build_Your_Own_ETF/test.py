@@ -1,11 +1,16 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
-params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
-df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20]})
-
-
-
-riskdist = [60,20,10]
-print(riskdist[0])
+from etfbuilder import *
+keys_include = ["longName","marketCap","trailingPE","trailingAnnualDividendYield","price","ytdReturn"]
+#       trim df
+params = {'marketCap':[1000000000,4],'trailingAnnualDividendYield':[1,3],'trailingPE':[30,3]}
+df = load_market()
+keys = df.keys()
+for key, values in df.items():
+    if key not in keys_include:
+        df.pop(key)
+riskdist = [.6,.25,.15,0,0]
+budget = 1000000
+# objective: call score() with grab ticker data as input and params as input
+print(score(params,df,riskdist,budget))
