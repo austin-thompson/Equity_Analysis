@@ -13,6 +13,12 @@ import pandas as pd
 import numpy as np
 # import requests
 import yfinance as yf
+
+# import
+from Utilities.Grab_Ticker_Data import grab_ticker_data
+
+
+
 # from get_all_tickers import get_tickers as gt
 #                     utils ****update()TO BE CHANGED*****
 def update():
@@ -110,6 +116,6 @@ def score(params,df,riskdist,budget):
 	df = controller(params, df)	
 	etf_column = solver(df,riskdist,budget)
 	return etf_column
-def load_market():
-	df = pd.read_csv('EXAMPLE.csv')
+def load_market(exchange, analysis_params, default_params = []):
+	df = grab_ticker_data.run(exchange, analysis_params)
 	return df

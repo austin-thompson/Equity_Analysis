@@ -5,13 +5,14 @@ import pandas_datareader as web
 import requests
 from datetime import date
 from IPython.display import display
+import numpy as np
 
 ####################################################################
 
-"""
-returns metadata for a specific exchange
-available: US, NASDAQ, OTCBB, PINK, BATS
-"""
+#
+# returns metadata for a specific exchange
+# available: US, NASDAQ, OTCBB, PINK, BATS
+#
 def get_exchange_data(key, exchange="NYSE"):
 	endpoint = f"https://eodhistoricaldata.com/api/exchange-symbol-list/"
 	endpoint += f"{exchange}?api_token={key}&fmt=json"
@@ -28,16 +29,18 @@ def get_exchange_data(key, exchange="NYSE"):
 
 ####################################################################
 
-"""
-PLACEHOLDER
-"""
-def main():
-	# parameters
-	exchange = "NYSE"
-	api_key = open("config/api_token.txt").read() # define this api name better
-	raw_data_location = "csv/raw_data/raw_data.csv"
-	result_set_location = "csv/result_set/result_set_" + exchange + "_" + str(date.today()) + ".csv" # replace with formatted string
-
+#
+# PLACEHOLDER
+#
+def grab_ticker_data(exchange, analysis_params, default_params = []):
+	# csv parameters
+	api_key = open("Utilities/Grab_Ticker_Data/config/api_token.txt").read() # define this api name better
+	raw_data_location = "Utilities/Grab_Ticker_Data/csv/raw_data/raw_data.csv"
+	result_set_location = "Utilities/Grab_Ticker_Data/csv/result_set/result_set_" + exchange + "_" + str(date.today()) + ".csv" # replace with formatted string
+	
+	print("Querying Exchange: " + exchange)
+	print("---------------------------------------------------------------------------------------------")
+	
 	# change csv calls to leverage dataframes instead
 	#### UNCOMMENT BELOW CODE FOR LIVE TICKER SYMBOL LIST GENERATION FOR SELECTED EXCHANGE
 	raw_data = get_exchange_data(api_key, exchange) #change api_key to better name above
@@ -45,10 +48,11 @@ def main():
 	raw_data = pd.read_csv(raw_data_location)
 	
 	#### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-	# raw_data = pd.read_csv("csv/raw_data/test_short_nasdaq.csv") 
+	# raw_data = pd.read_csv("Utilities/Grab_Ticker_Data/csv/raw_data/test_total.csv") 
 
 	list_of_ticker_symbols_by_exchange = list(raw_data["Code"])
-	print("BEFORE DELETE: ", list_of_ticker_symbols_by_exchange)
+
+	# print("BEFORE DELETE: ", list_of_ticker_symbols_by_exchange)
 	
 	running_total : int = 0
 	end_total : int = len(list_of_ticker_symbols_by_exchange)
@@ -56,6 +60,7 @@ def main():
 	market_data = []
 	bad_tickers = []
 
+	# queries yahoo finance for ticker passed, keeps track of bad pulls (ie. ticker lacking appropiate data)
 	for ticker in list_of_ticker_symbols_by_exchange:
 		running_total += 1
 		try: 
@@ -66,30 +71,40 @@ def main():
 			print( "[" + str(running_total) + "/" + str(end_total) + "] Error with:", ticker)
 			bad_tickers.append(ticker)
 
+	# culls tickers of tickers lacking appropiate data
 	for ticker in bad_tickers:
 		list_of_ticker_symbols_by_exchange.remove(ticker)
 
-	print("AFTER DELETE: ",list_of_ticker_symbols_by_exchange)
+	# print("AFTER DELETE: ",list_of_ticker_symbols_by_exchange)
 	
+	# adds index column, inserts ticker symbols into dataframe, resets index
 	df=pd.concat(market_data, axis=0)
 	df.insert(0, "tickerSymbol", list_of_ticker_symbols_by_exchange)
 	df.index = range(0, len(list_of_ticker_symbols_by_exchange), 1)
 	
-	df = df.loc[:, ["tickerSymbol", "marketCap", "trailingAnnualDividendYield", "trailingPE"]]
+	# define params for analysis, scrubs data accordingly (ie. drops unnecessary columns) 
+	df = df.loc[:, analysis_params]
 
+	# scrub data, removes rows with missing values
+	for key in analysis_params:
+		df[key].replace("", np.nan, inplace=True)
+
+	# save data into csv format (replace with some form of database)
 	# df.to_csv(result_set_location, encoding="utf-8", index=False)
-
 	# print("Data Frame Successfully saved to:" , result_set_location)
-	display(df)
 
+	# display(df)
+
+	# return a dataframe
 	return df
 
 ####################################################################
 
-"""
-PLACEHOLDER
-"""
-main()
+#
+# PLACEHOLDER
+#
+def run(exchange, analysis_params, default_params = []):
+	return grab_ticker_data(exchange, analysis_params)
 
 ####################################################################
 
