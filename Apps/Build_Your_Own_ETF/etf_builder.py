@@ -1,23 +1,35 @@
+# File Name:
+#
+# Description:
+#
+#
+
+####################################################################
+
+#
+# sys imports
+#
 import pandas as pd
 import numpy as np
 import yfinance as yf
 
-
 ####################################################################
 
 #### local imports
-
 # clean up this implementation (create pip modules?)
 import sys
 
 sys.path.append("../../Utilities")
-
 # ticker data
 from Grab_Ticker_Data import grab_ticker_data
 
 
-# from get_all_tickers import get_tickers as gt
-#                     utils ****update()TO BE CHANGED*****
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def update():
     tickers_all = gt.get_tickers(AMEX=False)
     tickers = yf.Tickers(tickers_all)
@@ -28,6 +40,12 @@ def update():
     return df
 
 
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def param_module(distmap, target_idx):
     # 			******param module test******
     # Iterate through df and assign PE weight based on distmap from target
@@ -42,8 +60,14 @@ def param_module(distmap, target_idx):
     return column_weight
 
 
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def score_module(params, df):
-    # 			******param module test******
+    # param module test
     # Iterate through df and assign PE weight based on distmap from target
     column_score = []
     for indexdf in range(len(df)):
@@ -56,12 +80,23 @@ def score_module(params, df):
     return column_score
 
 
-#                     algos
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def normal_dist(x, mean, sd):
     prob_density = (np.pi * sd) * np.exp(-0.5 * ((x - mean) / sd) ** 2)
     return prob_density
 
 
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def controller(params, df):
     scale_size = len(df) * 2
     for param in params:
@@ -88,7 +123,7 @@ def controller(params, df):
             target_idx = target_df[param].index.item()
         else:
             target_idx = round(np.median(target_df[param].index.values))
-        # 			calls param module
+        # calls param module
         param_column = param_module(
             distmap, target_idx
         )  # centers dist map to target while keeping length of column len(df)
@@ -100,6 +135,12 @@ def controller(params, df):
     return df
 
 
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def solver(df, riskdist, budget):
     df = df.sort_values(by=["SCORE"], ascending=False)
     df = df.reset_index(drop=True)
@@ -117,18 +158,24 @@ def solver(df, riskdist, budget):
     # output is df of length len(dist) ordered by shares
 
 
-#                     run
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def score(params, df, riskdist, budget):
-    #                  input
-    # params = {'CAP':[10,4],'DIV':[.2,3],'PE':[60,3]}
-    # df = pd.DataFrame({'TKR':['MSFT','AAPL','NVDA','CGNX','TM'],'CAP': [4, 6, 30,15,10],'DIV':[0,.1,.05,.2,.5],'PE':[10,60,80,30,20],'PRICE':[50,60,80,30,20]})
-    # riskdist = [.6,.25,.15,0,0]
-    # budget = 10000
     df = controller(params, df)
     etf_column = solver(df, riskdist, budget)
     return etf_column
 
 
+####################################################################
+#
+# Description:
+#  TODO: Update method description
+#
+####################################################################
 def load_market(exchange, analysis_params, default_params=[]):
     df = grab_ticker_data.execute(exchange, analysis_params)
     return df
