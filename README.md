@@ -1,2 +1,2 @@
-# ticker-project
-find out.
+# equity-analysis
+TBD

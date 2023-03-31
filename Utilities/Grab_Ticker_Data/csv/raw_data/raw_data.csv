@@ -1035,6 +1035,7 @@ CPUH-WT,Compute Health Acquisition Corp,USA,NYSE,USD,Common Stock,
 CQP,Cheniere Energy Partners LP,USA,NYSE MKT,USD,Common Stock,US16411Q1013
 CQQQ,Invesco China Technology ETF,USA,NYSE ARCA,USD,ETF,US46138E8003
 CR,Crane Company,USA,NYSE,USD,Common Stock,US2244411052
+CR-W,CR-W,USA,NYSE,USD,Common Stock,
 CRAK,VanEck Oil Refiners ETF,USA,NYSE ARCA,USD,ETF,US92189F5851
 CRBG,Corebridge Financial Inc.,USA,NYSE,USD,Common Stock,
 CRBN,iShares MSCI ACWI Low Carbon Target ETF,USA,NYSE ARCA,USD,ETF,US46434V4648
@@ -1130,6 +1131,7 @@ CXAC,C5 Acquisition Corp,USA,NYSE,USD,Common Stock,US12530D1054
 CXE,MFS High Income Municipal Closed Fund,USA,NYSE,USD,Common Stock,US59318D1046
 CXH,MFS Investment Grade Municipal Trust,USA,NYSE,USD,Common Stock,US59318B1089
 CXM,Sprinklr Inc,USA,NYSE,USD,Common Stock,US85208T1079
+CXT-W,CXT-W,USA,NYSE,USD,Common Stock,
 CXW,CoreCivic Inc,USA,NYSE,USD,Common Stock,US21871N1019
 CYA,Simplify Tail Risk Strategy ETF,USA,NYSE ARCA,USD,ETF,
 CYB,WisdomTree Chinese Yuan Strategy Fund,USA,NYSE ARCA,USD,ETF,US97717W1826
@@ -2259,6 +2261,7 @@ HAL,Halliburton Company,USA,NYSE,USD,Common Stock,US4062161017
 HAP,VanEck Natural Resources ETF,USA,NYSE ARCA,USD,ETF,US92189F8418
 HAPI,Harbor Corporate Culture ETF,USA,NYSE ARCA,USD,ETF,
 HAPY,Harbor Corporate Culture Leaders ETF,USA,NYSE ARCA,USD,ETF,US41151J6047
+HARD,HARD,USA,NYSE ARCA,USD,Common Stock,
 HART,IQ Healthy Hearts ETF,USA,NYSE ARCA,USD,ETF,US45409B3217
 HASI,Hannon Armstrong Sustainable Infrastructure Capital Inc,USA,NYSE,USD,Common Stock,US41068X1000
 HAUZ,Xtrackers International Real Estate ETF,USA,NYSE ARCA,USD,ETF,US2330518463
@@ -3073,7 +3076,7 @@ MAS,Masco Corporation,USA,NYSE,USD,Common Stock,US5745991068
 MATV,Mativ Holdings Inc.,USA,NYSE,USD,Common Stock,US8085411069
 MATX,Matson Inc,USA,NYSE,USD,Common Stock,US57686G1058
 MAV,Pioneer Municipal High Income Advantage Trust,USA,NYSE,USD,Common Stock,US7237621005
-MAX,"MediaAlpha, Inc.",USA,NYSE,USD,Common Stock,US58450V1044
+MAX,MediaAlpha Inc.,USA,NYSE,USD,Common Stock,US58450V1044
 MAXR,Maxar Technologies Inc,USA,NYSE,USD,Common Stock,US57778K1051
 MBAC,M3-Brigade Acquisition II Corp,USA,NYSE,USD,Common Stock,US5538001034
 MBC,MasterBrand Inc.,USA,NYSE,USD,Common Stock,

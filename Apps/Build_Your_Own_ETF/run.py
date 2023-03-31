@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from etfbuilder import *
+from etf_builder import *
 from IPython.display import display
 
 exchange = "NYSE"
