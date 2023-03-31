@@ -81,7 +81,7 @@ def grab_ticker_data(exchange, analysis_params, default_params=[]):
     # raw_data = pd.read_csv(raw_data_location)
 
     #### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-    raw_data = pd.read_csv(root_dir_location + "csv/raw_data/test_short_nasdaq.csv")
+    raw_data = pd.read_csv(root_dir_location + "csv/raw_data/test_total.csv")
 
     list_of_ticker_symbols_by_exchange = list(raw_data["Code"])
 

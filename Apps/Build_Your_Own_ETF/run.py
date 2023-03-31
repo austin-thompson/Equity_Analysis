@@ -33,6 +33,7 @@ def run():
         "trailingAnnualDividendYield",
         "price",
     ]
+
     user_defined_params = {
         "marketCap": [1000000000, 4],
         "trailingAnnualDividendYield": [1, 3],
@@ -47,6 +48,14 @@ def run():
     print(
         "---------------------------------------------------------------------------------------------"
     )
+
+    print("params: " + str(user_defined_params))
+    print("budget: " + str(budget))
+
+    print(
+        "---------------------------------------------------------------------------------------------"
+    )
+
     # # objective: call score() with grab ticker data as input and params as input
     print(score(user_defined_params, df, risk_dist, budget))
 
