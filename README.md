@@ -6,31 +6,35 @@ The EAS is **NOT** designed to give purchases recommendations and is merely a me
 analysis in a more rapid manner. No data returned should be taken as financial advice, please consult with a certified 
 professional if you are seeking assitance with how to manage your capital.
 
-## Directory Structure
+## Project Structure
+### Directory Breakdown
 ```
 equity-analysis
-└───apps
-│   │   file011.txt
-│   │   file012.txt
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt 
+└───Apps
+│   └───SubApp
+│   |   │-subapp.py
+│   |   │-run.py
+│   │-README.md
 │   
-└───folder2
-│   │   file021.txt
-│   │   file022.txt    
+└───Util
+│   └───SubUtil
+│   |   │-subutil.py
+│   │-README.md  
 │
-│   .gitignore
-│   README.md
+│-.gitignore
+│-README.md
 ```
+### Explaination
+........
 
 # Current Sub Applications
-## ETF Builder
+## ETF_Builder
+........
+## Forecast_Simulator
 ........
 
 
 # Current Utilities
-## Grab Ticker Data
+## Fundamental_Stock_Data_By_Exchange
 ........
 
