@@ -53,7 +53,7 @@ def get_exchange_data(key, exchange="NYSE"):
 #
 ####################################################################
 def fundamental_stock_data_by_exchange(exchange, analysis_params, default_params=[]):
-    root_dir_location = "../../Utilities/Fundamental_Stock_Data_By_Exchange/"
+    root_dir_location = "../../Utils/Fundamental_Stock_Data_By_Exchange/"
 
     # csv parameters
     api_key = open(
