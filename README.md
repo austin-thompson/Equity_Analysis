@@ -1,12 +1,12 @@
 # Equity Analysis Suite
-## Description
+## Description:
 This repository houses the source code for the equity-analysis suite of applications (EAS). The purpose of the EAS is to
 provide speculators with a toolset to help them make inference in relation to picking equities they wish to purchase.
 The EAS is _**NOT**_ designed to give purchases recommendations and is merely a means to perform various types of stock 
 analysis in a more rapid manner. No data returned should be taken as financial advice, please consult with a certified 
 professional if you are seeking assitance with how to manage your capital.
 
-## Directory Breakdown
+## Directory Breakdown:
 ```
 Equity-Analysis
 └───Apps
@@ -25,26 +25,26 @@ Equity-Analysis
 │-requirements.txt
 ```
 
-## Setting Up Project 
+## Setting Up Project: 
 - Open Terminal Window
 - Clone Local Copy of Repository
 - Navigate into 'Equity_Analysis/' directory
 - run `pip install -r requirements.txt`
 
-## Creating a New Branch
+## Creating a New Branch:
 ........
 
-## Submitting a Pull Request
+## Submitting a Pull Request:
 ........
 
-## Current Sub Applications
+## Current Sub Applications:
 ### ETF_Builder
 ........
 ### Forecast_Simulator
 ........
 
 
-## Current Utilities
+## Current Utilities:
 ### Fundamental_Stock_Data_By_Exchange
 ........
 
