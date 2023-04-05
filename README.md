@@ -38,13 +38,13 @@ Equity-Analysis
 ........
 
 ## Current Sub Applications:
-### ETF_Builder
+### _ETF_Builder_
 ........
-### Forecast_Simulator
+### _Forecast_Simulator_
 ........
 
 
 ## Current Utilities:
-### Fundamental_Stock_Data_By_Exchange
+### _Fundamental_Stock_Data_By_Exchange_
 ........
 
