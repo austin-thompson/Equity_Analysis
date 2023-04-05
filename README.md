@@ -6,10 +6,9 @@ The EAS is **NOT** designed to give purchases recommendations and is merely a me
 analysis in a more rapid manner. No data returned should be taken as financial advice, please consult with a certified 
 professional if you are seeking assitance with how to manage your capital.
 
-## Project Structure
-### Directory Breakdown
+## Directory Breakdown
 ```
-equity-analysis
+Equity-Analysis
 └───Apps
 │   └───SubApp
 │   |   │-subapp.py
@@ -23,18 +22,29 @@ equity-analysis
 │
 │-.gitignore
 │-README.md
+│-requirements.txt
 ```
-### Explaination
+
+## Setting Up Project 
+- Open Terminal Window
+- Clone Local Copy of Repository
+- Navigate into 'Equity_Analysis/' directory
+- run `pip install -r requirements.txt`
+
+## Creating a New Branch
 ........
 
-# Current Sub Applications
-## ETF_Builder
+## Submitting a Pull Request
 ........
-## Forecast_Simulator
+
+## Current Sub Applications
+### ETF_Builder
+........
+### Forecast_Simulator
 ........
 
 
-# Current Utilities
-## Fundamental_Stock_Data_By_Exchange
+## Current Utilities
+### Fundamental_Stock_Data_By_Exchange
 ........
 
