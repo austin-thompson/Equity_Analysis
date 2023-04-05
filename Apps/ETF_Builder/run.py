@@ -34,7 +34,7 @@ from Fundamental_Stock_Data_By_Exchange import fundamental_stock_data_by_exchang
 #  TODO: Update method description
 #
 ####################################################################
-def run():
+def execute():
     exchange = "NASDAQ"
     analysis_params = [
         "quoteType",
@@ -73,4 +73,4 @@ def run():
 
 
 # Executes Build Your Own ETF
-run()
+execute()

@@ -7,7 +7,23 @@ analysis in a more rapid manner. No data returned should be taken as financial a
 professional if you are seeking assitance with how to manage your capital.
 
 ## Directory Structure
-
+```
+equity-analysis
+└───apps
+│   │   file011.txt
+│   │   file012.txt
+│   │
+│   └───subfolder1
+│       │   file111.txt
+│       │   file112.txt 
+│   
+└───folder2
+│   │   file021.txt
+│   │   file022.txt    
+│
+│   .gitignore
+│   README.md
+```
 
 # Current Sub Applications
 ## ETF Builder
