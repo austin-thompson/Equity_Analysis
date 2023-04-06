@@ -1,2 +1,2 @@
-# equity-analysis
+# Equity Analysis Suite > Applications
 TBD

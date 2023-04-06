@@ -17,8 +17,7 @@ Equity_Analysis
 │   
 └───Databases
 │   └───Database
-│   |   │-subapp.py
-│   |   │-run.py
+│   |   │-database.csv
 │   │-README.md (Explains all current local CSV 'Database' files, MongoDB/Flask Set Up)
 │   
 └───Util
