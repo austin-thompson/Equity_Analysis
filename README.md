@@ -37,16 +37,16 @@ Equity_Analysis
 - run `pip install -r requirements.txt`
 
 ## Creating a New Branch:
-........
+PLACEHOLDER
 
 ## Submitting a Pull Request:
-........
+PLACEHOLDER
 
 ## Current Sub Applications:
 ### _ETF_Builder_
-........
+PLACEHOLDER
 ### _Forecast_Simulator_
-........
+PLACEHOLDER
 
 
 ## Current Utilities:
