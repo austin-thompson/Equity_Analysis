@@ -8,21 +8,27 @@ professional if you are seeking assitance with how to manage your capital.
 
 ## Directory Breakdown:
 ```
-Equity-Analysis
+Equity_Analysis
 └───Apps
 │   └───SubApp
 │   |   │-subapp.py
 │   |   │-run.py
-│   │-README.md
+│   │-README.md (Explains all current Sub Applications)
+│   
+└───Databases
+│   └───Database
+│   |   │-subapp.py
+│   |   │-run.py
+│   │-README.md (Explains all current local CSV 'Database' files, MongoDB/Flask Set Up)
 │   
 └───Util
 │   └───SubUtil
 │   |   │-subutil.py
-│   │-README.md  
+│   │-README.md (Explains all current Sub Utilities) 
 │
 │-.gitignore
-│-README.md
-│-requirements.txt
+│-README.md (Root Level)
+│-requirements.txt (Required pip packages)
 ```
 
 ## Setting Up Project: 
