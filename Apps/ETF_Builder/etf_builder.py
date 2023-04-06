@@ -14,6 +14,7 @@ import numpy as np
 import yfinance as yf
 
 
+
 ####################################################################
 #
 # Description:
@@ -141,3 +142,4 @@ def score(params, df, riskdist, budget):
     df = controller(params, df)
     etf_column = solver(df, riskdist, budget)
     return etf_column
+

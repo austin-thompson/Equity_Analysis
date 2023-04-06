@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from etf_builder import *
 from IPython.display import display
 
+
 # clean up this implementation (create pip modules?)
 # START
 #
@@ -26,6 +27,7 @@ sys.path.append("../../Utils")
 from Fundamental_Stock_Data_By_Exchange import fundamental_stock_data_by_exchange
 
 # END
+
 
 
 ####################################################################
@@ -52,7 +54,10 @@ def execute():
         "trailingPE": [30, 3],
     }
 
+
     df = fundamental_stock_data_by_exchange.execute(exchange, analysis_params)
+
+
 
     risk_dist = [0.6, 0.25, 0.15, 0, 0]
     budget = 1000000
