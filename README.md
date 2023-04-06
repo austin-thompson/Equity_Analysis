@@ -11,18 +11,19 @@ professional if you are seeking assitance with how to manage your capital.
 Equity_Analysis
 └───Apps
 │   └───SubApp
-│   |   │-subapp.py
-│   |   │-run.py
+│   |   │-subAppName.py
+│   |   │-run_subAppName.py
 │   │-README.md (Explains all current Sub Applications)
 │   
 └───Databases
 │   └───Database
-│   |   │-database.csv
+│   |   │-databaseName.csv
+│   |   │-update_databaseName.py  
 │   │-README.md (Explains all current local CSV 'Database' files, MongoDB/Flask Set Up)
 │   
 └───Util
 │   └───SubUtil
-│   |   │-subutil.py
+│   |   │-subUtilName.py
 │   │-README.md (Explains all current Sub Utilities) 
 │
 │-.gitignore
