@@ -15,29 +15,6 @@ import yfinance as yf
 
 ####################################################################
 
-#### local imports
-# clean up this implementation (create pip modules?)
-import sys
-
-sys.path.append("../../Utilities")
-# ticker data
-from Grab_Ticker_Data import grab_ticker_data
-
-
-####################################################################
-#
-# Description:
-#  TODO: Update method description
-#
-####################################################################
-def update():
-    tickers_all = gt.get_tickers(AMEX=False)
-    tickers = yf.Tickers(tickers_all)
-    df = pd.DataFrame
-    for ticker in tickers:
-        df.append(ticker.fast_info)
-    df.to_csv  # to do: SAVE TO LOCATION
-    return df
 
 
 ####################################################################
@@ -170,12 +147,3 @@ def score(params, df, riskdist, budget):
     return etf_column
 
 
-####################################################################
-#
-# Description:
-#  TODO: Update method description
-#
-####################################################################
-def load_market(exchange, analysis_params, default_params=[]):
-    df = grab_ticker_data.execute(exchange, analysis_params)
-    return df

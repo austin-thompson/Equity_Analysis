@@ -15,6 +15,14 @@ import matplotlib.pyplot as plt
 from etf_builder import *
 from IPython.display import display
 
+#### local imports
+# clean up this implementation (create pip modules?)
+import sys
+
+sys.path.append("../../Utilities")
+# ticker data
+from Grab_Ticker_Data import grab_ticker_data
+
 
 ####################################################################
 #
@@ -39,8 +47,8 @@ def run():
         "trailingAnnualDividendYield": [1, 3],
         "trailingPE": [30, 3],
     }
-
-    df = load_market(exchange, analysis_params)
+## 
+    df = grab_ticker_data.execute(exchange, analysis_params)
 
     risk_dist = [0.6, 0.25, 0.15, 0, 0]
     budget = 1000000
