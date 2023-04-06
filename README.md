@@ -51,5 +51,5 @@ PLACEHOLDER
 
 ## Current Utilities:
 ### _Fundamental_Stock_Data_By_Exchange_
-........
+PLACEHOLDER
 
