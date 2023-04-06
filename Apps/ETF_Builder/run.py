@@ -1,9 +1,9 @@
+####################################################################
 # File Name:
 #
 # Description:
 #
 #
-
 ####################################################################
 
 #
@@ -15,13 +15,19 @@ import matplotlib.pyplot as plt
 from etf_builder import *
 from IPython.display import display
 
-#### local imports
+
 # clean up this implementation (create pip modules?)
+# START
+#
+# local imports
+#
 import sys
 
-sys.path.append("../../Utilities")
-# ticker data
-from Grab_Ticker_Data import grab_ticker_data
+sys.path.append("../../Utils")
+from Fundamental_Stock_Data_By_Exchange import fundamental_stock_data_by_exchange
+
+# END
+
 
 
 ####################################################################
@@ -30,8 +36,8 @@ from Grab_Ticker_Data import grab_ticker_data
 #  TODO: Update method description
 #
 ####################################################################
-def run():
-    exchange = "NYSE"
+def execute():
+    exchange = "NASDAQ"
     analysis_params = [
         "quoteType",
         "tickerSymbol",
@@ -47,8 +53,11 @@ def run():
         "trailingAnnualDividendYield": [1, 3],
         "trailingPE": [30, 3],
     }
-## 
-    df = grab_ticker_data.execute(exchange, analysis_params)
+
+
+    df = fundamental_stock_data_by_exchange.execute(exchange, analysis_params)
+
+
 
     risk_dist = [0.6, 0.25, 0.15, 0, 0]
     budget = 1000000
@@ -69,4 +78,4 @@ def run():
 
 
 # Executes Build Your Own ETF
-run()
+execute()

@@ -52,8 +52,8 @@ def get_exchange_data(key, exchange="NYSE"):
 #  TODO: Update method description
 #
 ####################################################################
-def grab_ticker_data(exchange, analysis_params, default_params=[]):
-    root_dir_location = "../../Utilities/Grab_Ticker_Data/"
+def fundamental_stock_data_by_exchange(exchange, analysis_params, default_params=[]):
+    root_dir_location = "../../Utils/Fundamental_Stock_Data_By_Exchange/"
 
     # csv parameters
     api_key = open(
@@ -145,4 +145,4 @@ def grab_ticker_data(exchange, analysis_params, default_params=[]):
 #
 ####################################################################
 def execute(exchange, analysis_params, default_params=[]):
-    return grab_ticker_data(exchange, analysis_params)
+    return fundamental_stock_data_by_exchange(exchange, analysis_params)

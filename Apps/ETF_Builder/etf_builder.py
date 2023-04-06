@@ -1,9 +1,9 @@
+####################################################################
 # File Name:
 #
 # Description:
 #
 #
-
 ####################################################################
 
 #
@@ -12,8 +12,6 @@
 import pandas as pd
 import numpy as np
 import yfinance as yf
-
-####################################################################
 
 
 
@@ -50,7 +48,7 @@ def score_module(params, df):
     for indexdf in range(len(df)):
         score = 0
         for param in params:
-            score += df.at[indexdf, param + "W"]
+            score += df.at[indexdf, param + "-W"]
             # add param+W
             # append new column
         column_score.append(score)
@@ -104,10 +102,10 @@ def controller(params, df):
         param_column = param_module(
             distmap, target_idx
         )  # centers dist map to target while keeping length of column len(df)
-        df.insert(df.columns.size - 1, param + "W", param_column)
+        df.insert(df.columns.size - 1, param + "-W", param_column)
 
     score_column = score_module(params, df)
-    df.insert(df.columns.size - 1, "SCORE", score_column)
+    df.insert(df.columns.size - 1, "score", score_column)
 
     return df
 
@@ -119,7 +117,7 @@ def controller(params, df):
 #
 ####################################################################
 def solver(df, riskdist, budget):
-    df = df.sort_values(by=["SCORE"], ascending=False)
+    df = df.sort_values(by=["score"], ascending=False)
     df = df.reset_index(drop=True)
     shares_column = []
     for idx in range(len(riskdist)):
@@ -127,9 +125,8 @@ def solver(df, riskdist, budget):
         shares_column.append(shares)  # add column with shares
     for idx in range(len(df) - len(riskdist)):
         shares_column.append(0)
-    df.insert(df.columns.size - 1, "SHARES", shares_column)
-    # df = df.sort_values(by=['SHARES'])
-    # df = df.reset_index(drop=True)
+    df.insert(df.columns.size - 1, "shares", shares_column)
+
     return df
 
     # output is df of length len(dist) ordered by shares
@@ -145,5 +142,4 @@ def score(params, df, riskdist, budget):
     df = controller(params, df)
     etf_column = solver(df, riskdist, budget)
     return etf_column
-
 
