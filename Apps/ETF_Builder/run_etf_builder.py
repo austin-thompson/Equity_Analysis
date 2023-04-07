@@ -6,38 +6,35 @@
 #
 ####################################################################
 
-#
-# sys imports
-#
+####################################################################
+# Sys Imports
+####################################################################
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from etf_builder import *
 from IPython.display import display
 
-
-# clean up this implementation (create pip modules?)
-# START
-#
-# local imports
-#
+####################################################################
+# Local Imports (clean up this implementation, create pip modules?)
+####################################################################
 import sys
 
 sys.path.append("../../Utils")
-from Fundamental_Stock_Data_By_Exchange import fundamental_stock_data_by_exchange
-
-# END
-
+from Scrub_Fundamental_Stock_Data_By_Defined_Parameters import (
+    scrub_fundamental_stock_data_by_defined_parameters,
+)
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def execute():
-    exchange = "NASDAQ"
+    df = pd.read_csv(
+        "../../Databases/Fundamental_Stock_Data_NASDAQ/testing_fundamental_stock_data_NASDAQ.csv"
+    )
+
     analysis_params = [
         "quoteType",
         "tickerSymbol",
@@ -54,28 +51,30 @@ def execute():
         "trailingPE": [30, 3],
     }
 
+    df = scrub_fundamental_stock_data_by_defined_parameters.execute(df, analysis_params)
 
-    df = fundamental_stock_data_by_exchange.execute(exchange, analysis_params)
-
-
-
-    risk_dist = [0.6, 0.25, 0.15, 0, 0]
-    budget = 1000000
+    user_defined_risk_dist = [0.6, 0.25, 0.15, 0, 0]
+    user_defined_budget = 1000000
 
     print(
         "---------------------------------------------------------------------------------------------"
     )
 
-    print("params: " + str(user_defined_params))
-    print("budget: " + str(budget))
+    print("user_defined_params: " + str(user_defined_params))
+    print("user_defined_budget: " + str(user_defined_budget))
 
     print(
         "---------------------------------------------------------------------------------------------"
     )
 
-    # # objective: call score() with grab ticker data as input and params as input
-    print(score(user_defined_params, df, risk_dist, budget))
+    #### ** DEBUG **
+    # display(df)
+
+    etf_result = score(
+        user_defined_params, df, user_defined_risk_dist, user_defined_budget
+    )
+    print(etf_result)
 
 
-# Executes Build Your Own ETF
+# Executes ETF_Builder
 execute()

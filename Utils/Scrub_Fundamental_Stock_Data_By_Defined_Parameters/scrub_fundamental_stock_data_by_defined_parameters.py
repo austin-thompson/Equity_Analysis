@@ -7,23 +7,25 @@
 ####################################################################
 
 ####################################################################
-# Local Imports (clean up this implementation, create pip modules?)
+# Sys Imports
 ####################################################################
-import sys
+from IPython.display import display
 
-sys.path.append("../../Utils")
-from Get_Fundamental_Stock_Data_By_Exchange import (
-    get_fundamental_stock_data_by_exchange,
-)
+
+def scrub_fundamental_stock_data_by_defined_parameters(df, analysis_params):
+    # define params for analysis, scrubs data accordingly (ie. drops unnecessary columns)
+    df = df.loc[:, analysis_params]
+
+    #### ** DEBUG **
+    # display(df)
+
+    # return a dataframe
+    return df
 
 
 ####################################################################
 # Description:
 #  TODO: Update method description
 ####################################################################
-def execute():
-    get_fundamental_stock_data_by_exchange.execute("NYSE")
-
-
-# calls execute() to pull latest NYSE data
-execute()
+def execute(df, analysis_params):
+    return scrub_fundamental_stock_data_by_defined_parameters(df, analysis_params)

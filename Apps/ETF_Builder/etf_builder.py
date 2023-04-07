@@ -6,20 +6,15 @@
 #
 ####################################################################
 
-#
-# sys imports
-#
-import pandas as pd
+####################################################################
+# Sys Imports
+####################################################################
 import numpy as np
-import yfinance as yf
-
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def param_module(distmap, target_idx):
     # 			******param module test******
@@ -36,10 +31,8 @@ def param_module(distmap, target_idx):
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def score_module(params, df):
     # param module test
@@ -56,10 +49,8 @@ def score_module(params, df):
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def normal_dist(x, mean, sd):
     prob_density = (np.pi * sd) * np.exp(-0.5 * ((x - mean) / sd) ** 2)
@@ -67,10 +58,8 @@ def normal_dist(x, mean, sd):
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def controller(params, df):
     scale_size = len(df) * 2
@@ -111,10 +100,8 @@ def controller(params, df):
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def solver(df, riskdist, budget):
     df = df.sort_values(by=["score"], ascending=False)
@@ -133,13 +120,10 @@ def solver(df, riskdist, budget):
 
 
 ####################################################################
-#
 # Description:
 #  TODO: Update method description
-#
 ####################################################################
 def score(params, df, riskdist, budget):
     df = controller(params, df)
     etf_column = solver(df, riskdist, budget)
     return etf_column
-
