@@ -76,5 +76,5 @@ def execute():
     print(etf_result)
 
 
-# Executes ETF_Builder
+# calls execute() to run ETF_Builder
 execute()
