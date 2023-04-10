@@ -61,7 +61,7 @@ def get_fundamental_stock_data_by_exchange(exchange):
 
     #### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
     raw_exchange_data = pd.read_csv(
-        util_dir_path + "testing_data/test_short_nasdaq.csv"
+        util_dir_path + "testing_data/nasdaq_test_short.csv"
     )
     database_csv_filepath = "testing_fundamental_stock_data" + "_" + exchange + ".csv"
 
