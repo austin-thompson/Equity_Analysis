@@ -46,11 +46,13 @@ PLACEHOLDER
 ## Current Sub Applications:
 ### _ETF_Builder_
 PLACEHOLDER
-### _Forecast_Simulator_
+### _Return_And_Growth_Calculator_
 PLACEHOLDER
 
 
 ## Current Utilities:
-### _Fundamental_Stock_Data_By_Exchange_
+### _Get_Fundamental_Stock_Data_By_Exchange_
+PLACEHOLDER
+### _Scrub_Fundamental_Stock_Data_By_Exchange_
 PLACEHOLDER
 
