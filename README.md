@@ -67,7 +67,7 @@ Equity_Analysis
 
 ## Submitting a Pull Request:
 - Please follow the offical Github: [Creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) documentation to properly submit a Pull Request
-    - **NOTE:** All Pull Requests should be opened against the current _'developer'_ branch (e.g. _'base:developer'_ <- _'compare:branchToBeMerged'_)
+    - **NOTE:** All Pull Requests should be opened against the current _'developer'_ branch (e.g. _'base:developer'_ &larr; _'compare:branchToBeMerged'_)
 
 ## Current Sub Applications:
 ### _ETF_Builder_
