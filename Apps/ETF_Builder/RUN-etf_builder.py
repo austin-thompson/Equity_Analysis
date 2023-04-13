@@ -45,13 +45,13 @@ def execute():
         "price",
     ]
 
+    df = scrub_fundamental_stock_data_by_defined_parameters.execute(df, analysis_params)
+
     user_defined_params = {
         "marketCap": [1000000000, 4],
         "trailingAnnualDividendYield": [1, 3],
         "trailingPE": [30, 3],
     }
-
-    df = scrub_fundamental_stock_data_by_defined_parameters.execute(df, analysis_params)
 
     user_defined_risk_dist = [0.6, 0.25, 0.15, 0, 0]
     user_defined_budget = 1000000
