@@ -23,8 +23,8 @@ from IPython.display import display
 #
 import sys
 
-sys.path.append("../../Utils")
-from Fundamental_Stock_Data_By_Exchange import fundamental_stock_data_by_exchange
+sys.path.append("../../Utils/Fundamental_Stock_Data_By_Exchange/")
+import fundamental_stock_data_by_exchange 
 
 # END
 

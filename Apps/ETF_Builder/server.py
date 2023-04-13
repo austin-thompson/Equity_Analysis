@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+import bson
 import json
 from bson.objectid import ObjectId
 from bson.json_util import dumps
@@ -7,10 +8,14 @@ from pymongo import MongoClient
 
 import numpy as np
 
-from etfbuilder import *
+from etf_builder import *
+
 
 import pprint
+import sys
 
+sys.path.append("../../Utils/Fundamental_Stock_Data_By_Exchange/")
+import fundamental_stock_data_by_exchange 
 
 #Flask App Create and Config
 app = Flask(__name__)
@@ -37,7 +42,17 @@ etf_collection = db.etf_collection #Creating/accessing etf_collection
 
 def func_run(params):
     keys_include = ["longName","marketCap","trailingPE","trailingAnnualDividendYield","price","ytdReturn"]
-    df = load_market()
+    exchange = "NASDAQ"
+    analysis_params = [
+        "quoteType",
+        "tickerSymbol",
+        "longName",
+        "marketCap",
+        "trailingPE",
+        "trailingAnnualDividendYield",
+        "price",
+    ]
+    df = fundamental_stock_data_by_exchange.execute(exchange, analysis_params)
     keys = df.keys()
     for key, values in df.items():
         if key not in keys_include:
@@ -103,28 +118,28 @@ def etfgen():
         func_out = func_run(data)   #DataFrame
         func_out_head = func_out.head()
         print(func_out_head)
-        func_out_head.index = func_out_head.index.map(str)
-        dict_func_out_head = func_out_head.to_dict(orient='index')
+        # func_out_head.index = func_out_head.index.map(str)
+        # dict_func_out_head = func_out_head.to_dict(orient='index')
 
 
         func_out_desc = func_out.describe(include=[np.number])
         dict_func_out_desc = func_out_desc.to_dict(orient='index')
         
-        out_dict =  {
-                        "etf-build": dict_func_out_head,
-                        "about": dict_func_out_desc
-                    }
+        # out_dict =  {
+        #                 "etf-build": dict_func_out_head,
+        #                 "about": dict_func_out_desc
+        #             }
 
-        #Log minimal Output and get unique ID (_id)
-        mongodoc_id = etf_collection.insert_one(out_dict).inserted_id
+        # #Log minimal Output and get unique ID (_id)
+        # mongodoc_id = etf_collection.insert_one(out_dict).inserted_id
 
-        out_dict_augment =  {
-                                "etf-build": dict_func_out_head,
-                                "about": dict_func_out_desc,
-                                "_id": str(mongodoc_id)
-                            }
+        # out_dict_augment =  {
+        #                         "etf-build": dict_func_out_head,
+        #                         "about": dict_func_out_desc,
+        #                         "_id": str(mongodoc_id)
+        #                     }
 
-        out_json = json.dumps(out_dict_augment, indent=4, sort_keys=True)
+        out_json = json.dumps(dict_func_out_desc, indent=4, sort_keys=True)
 
         return(out_json)
 
