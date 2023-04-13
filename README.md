@@ -57,7 +57,7 @@ Equity_Analysis
 - Navigate into _'Equity_Analysis'_ directory
 - [Fetch/Pull](https://github.com/git-guides/git-pull) latest version of _'Equity_Analysis'_ repository
 - Spin up a new working branch off of 'developer' by running the following terminal command:  `git checkout -b <prefix>/<Name>-<BranchDescription>`
-    - Supported Prefixes: _'feature'_, _'bugfix'_, _'emergency'_
+    - Offical Prefixes: _'feature'_, _'bugfix'_, _'emergency'_
     - Punctuation should follow a similar patter as the generic example above (all lowercase _prefix_, first letter uppercase **N**_ame_ & **B**_ranch_**D**_escription_)
     - i.e.:  `git checkout -b feature/Name-ReturnAndGrowthCalculatorUpgrade developer`
 - Perform local changes
