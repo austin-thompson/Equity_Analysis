@@ -31,17 +31,43 @@ Equity_Analysis
 │-requirements.txt (Required pip packages)
 ```
 
+## Useful Links:
+- [Download: Git](https://git-scm.com/downloads)
+    - [Git Documentation](https://git-scm.com/doc)
+    - [Github Git Guides](https://github.com/git-guides)
+    - [Full Github Documentation](https://docs.github.com/en)
+- [Download: VSCode](https://code.visualstudio.com/Download)
+    - [VSCode Tips & Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+    - [Full VSCode Documentation](https://code.visualstudio.com/docs)
+
+
+
+
+
+
+
 ## Setting Up Project: 
 - Open Terminal Window
 - Clone Local Copy of Repository
-- Navigate into 'Equity_Analysis/' directory
-- run `pip install -r requirements.txt`
+- Navigate into _'Equity_Analysis'_ directory
+- Run the following terminal command:  `pip install -r requirements.txt`
 
 ## Creating a New Branch:
-PLACEHOLDER
+- Open Terminal Window
+- Navigate into _'Equity_Analysis'_ directory
+- [Fetch/Pull](https://github.com/git-guides/git-pull) latest version of _'Equity_Analysis'_ repository
+- Spin up a new working branch off of 'developer' by running the following terminal command:  `git checkout -b <prefix>/<Name>-<BranchDescription>`
+    - Supported Prefixes: _'feature'_, _'bugfix'_, _'emergency'_
+    - Punctuation should follow a similar patter as the generic example above (all lowercase _prefix_, first letter uppercase **N**_ame_ & **B**_ranch_**D**_escription_)
+    - i.e.:  `git checkout -b feature/Austin-ReturnAndGrowthCalculatorUpgrade developer`
+- Perform local changes
+- [Stag](https://github.com/git-guides/git-add) & [Commit](https://github.com/git-guides/git-commit) all local changes you wish to save on Github
+- [Push](https://github.com/git-guides/git-push) new working branch to Github by running the following terminal command: `git push -u origin <prefix>/<Name>-<BranchDescription>`
+    - i.e.:  `git push -u origin feature/Austin-ReturnAndGrowthCalculatorUpgrade`
 
 ## Submitting a Pull Request:
-PLACEHOLDER
+- Please follow the offical Github: [Creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) documentation to properly submit a Pull Request
+    - **NOTE:** All Pull Requests should be opened against the current _'developer'_ branch (e.g. _'base:developer'_ <- _'compare:branchToBeMerged'_)
 
 ## Current Sub Applications:
 ### _ETF_Builder_
