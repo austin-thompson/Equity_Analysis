@@ -7,6 +7,7 @@ from bson.json_util import dumps
 from pymongo import MongoClient
 
 import numpy as np
+import pandas as pd
 
 from etf_builder import *
 
@@ -14,8 +15,10 @@ from etf_builder import *
 import pprint
 import sys
 
-sys.path.append("../../Utils/Fundamental_Stock_Data_By_Exchange/")
-import fundamental_stock_data_by_exchange 
+sys.path.append("../../Utils")
+from Scrub_Fundamental_Stock_Data_By_Defined_Parameters import (
+    scrub_fundamental_stock_data_by_defined_parameters,
+)
 
 #Flask App Create and Config
 app = Flask(__name__)
@@ -52,7 +55,10 @@ def func_run(params):
         "trailingAnnualDividendYield",
         "price",
     ]
-    df = fundamental_stock_data_by_exchange.execute(exchange, analysis_params)
+    df = pd.read_csv(
+        "../../Databases/Fundamental_Stock_Data_NASDAQ/testing_fundamental_stock_data_NASDAQ.csv"
+    )
+    df = scrub_fundamental_stock_data_by_defined_parameters.execute(df, analysis_params)
     keys = df.keys()
     for key, values in df.items():
         if key not in keys_include:
