@@ -1,1 +1,0 @@
-mongodb+srv://profile_test:testtom@cluster0.p6mpa.mongodb.net/?retryWrites=true&w=majority
