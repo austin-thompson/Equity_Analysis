@@ -1,6 +1,9 @@
+import pandas as pd
 import pymongo
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+import bson
+from IPython.display import display
 fileObject = open("mongourl.txt", "r")
 uri = fileObject.read()
 # Create a new client and connect to the server
@@ -44,9 +47,21 @@ text_file = open("profile_id.txt", "w")
 n = text_file.write(str(entry.inserted_id))
 text_file.close()
 
+
+# signed in =>> profile id
 fileObject = open("profile_id.txt", "r")
 data = fileObject.read()
-print(data)
-find_id = etf_collection.find({"_id":data})
-print(find_id)
+id = bson.ObjectId(data)
+find_id = etf_collection.find_one({"_id":id})
+df = pd.DataFrame.from_dict(find_id["Portfolio"])
+df = df.transpose()
+display(df)
+# api call > flask
 
+
+#server
+
+
+
+
+#client
