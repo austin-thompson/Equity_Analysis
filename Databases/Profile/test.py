@@ -16,6 +16,11 @@ etf_collection = db.etf_collection
 
 
 
+
+
+
+
+# test portfoliio upload
 profile_dict_test =    {
                         "Name": "Tom's portfolio",
                         "Portfolio":   {
@@ -42,20 +47,22 @@ profile_dict_test =    {
                                                         }
                                         }
                     }
+#tell server todo this
 entry = etf_collection.insert_one(profile_dict_test)
+#
 text_file = open("profile_id.txt", "w")
 n = text_file.write(str(entry.inserted_id))
 text_file.close()
-
 
 # signed in =>> profile id
 fileObject = open("profile_id.txt", "r")
 data = fileObject.read()
 id = bson.ObjectId(data)
-find_id = etf_collection.find_one({"_id":id})
-df = pd.DataFrame.from_dict(find_id["Portfolio"])
-df = df.transpose()
-display(df)
+find_id = etf_collection.find_one({"username":'tomm'})
+display(find_id['password'])
+# df = pd.DataFrame.from_dict(find_id["Portfolio"])
+# df = df.transpose()
+# display(df)
 # api call > flask
 
 
