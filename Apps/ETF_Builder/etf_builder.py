@@ -108,7 +108,10 @@ def solver(df, riskdist, budget):
     df = df.reset_index(drop=True)
     shares_column = []
     for idx in range(len(riskdist)):
-        shares = (riskdist[idx] * budget) / df.at[idx, "price"]  # calc shares
+        print(df.at[idx, "regularMarketPrice"])
+        shares = (riskdist[idx] * budget) / df.at[
+            idx, "regularMarketPrice"
+        ]  # calc shares
         shares_column.append(shares)  # add column with shares
     for idx in range(len(df) - len(riskdist)):
         shares_column.append(0)

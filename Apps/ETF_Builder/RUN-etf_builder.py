@@ -31,30 +31,38 @@ from Scrub_Fundamental_Stock_Data_By_Defined_Parameters import (
 #  TODO: Update method description
 ####################################################################
 def execute():
+
+    # make this user defined (ie. pick which exchange you want to use)
+    # potentially
     df = pd.read_csv(
-        "../../Databases/Fundamental_Stock_Data_NASDAQ/testing_fundamental_stock_data_NASDAQ.csv"
+        "../../Databases/Fundamental_Stock_Data_NYSE/testing_fundamental_stock_data_NYSE.csv"
     )
 
+    # make this user defined (?)
     analysis_params = [
         "quoteType",
-        "tickerSymbol",
+        "symbol",
         "longName",
         "marketCap",
         "trailingPE",
         "trailingAnnualDividendYield",
-        "price",
+        "regularMarketPrice",
     ]
 
     df = scrub_fundamental_stock_data_by_defined_parameters.execute(df, analysis_params)
 
+    # make this user defined (needs to match number of params w risk dist)
     user_defined_params = {
         "marketCap": [1000000000, 4],
         "trailingAnnualDividendYield": [1, 3],
         "trailingPE": [30, 3],
     }
 
-    user_defined_risk_dist = [0.6, 0.25, 0.15, 0, 0]
-    user_defined_budget = 1000000
+    # make this user defined (needs to match number of params w risk dist)
+    user_defined_risk_dist = [0.6, 0.25, 0.15]
+
+    # make this user defined
+    user_defined_budget = 7590
 
     print(
         "---------------------------------------------------------------------------------------------"

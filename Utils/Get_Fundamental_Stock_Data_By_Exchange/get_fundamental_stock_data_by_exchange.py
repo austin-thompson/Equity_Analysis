@@ -16,6 +16,30 @@ import json
 import requests
 from IPython.display import display
 from alive_progress import alive_bar
+import requests
+from icecream import ic
+
+
+apiBase = "https://query2.finance.yahoo.com"
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
+
+
+def getCredentials(
+    cookieUrl="https://fc.yahoo.com", crumbUrl=apiBase + "/v1/test/getcrumb"
+):
+    cookie = requests.get(cookieUrl).cookies
+    crumb = requests.get(url=crumbUrl, cookies=cookie, headers=headers).text
+    return {"cookie": cookie, "crumb": crumb}
+
+
+def quote(symbols, credentials):
+    url = apiBase + "/v7/finance/quote"
+    params = {"symbols": ",".join(symbols), "crumb": credentials["crumb"]}
+    response = requests.get(
+        url, params=params, cookies=credentials["cookie"], headers=headers
+    )
+    quotes = response.json()["quoteResponse"]["result"]
+    return quotes
 
 
 ####################################################################
@@ -55,50 +79,30 @@ def get_fundamental_stock_data_by_exchange(exchange):
         "---------------------------------------------------------------------------------------------"
     )
 
-    #### UNCOMMENT BELOW CODE FOR LIVE TICKER SYMBOL LIST GENERATION FOR SELECTED EXCHANGE
+    #### UNCOMMENT BELOW CODE FOR LIVE TICKER SYMBOL LIST GENERATION FOR SELECTED EXCHANGE (20 Calls a Day....)
     # raw_exchange_data = get_all_tickers_in_exchange(api_key, exchange)
     # database_csv_filepath = "fundamental_stock_data" + "_" + exchange + ".csv"
 
     #### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-    raw_exchange_data = pd.read_csv(
-        util_dir_path + "testing_data/nasdaq_test_short.csv"
-    )
+    raw_exchange_data = pd.read_csv(util_dir_path + "testing_data/nyse_test_short.csv")
     database_csv_filepath = "testing_fundamental_stock_data" + "_" + exchange + ".csv"
 
     list_of_ticker_symbols = list(raw_exchange_data["Code"])
 
-    #### ** DEBUG **
-    # print("BEFORE DELETE: ", list_of_ticker_symbols)
+    print(list_of_ticker_symbols)
 
-    fundamental_stock_data = []
-    bad_ticker_symbols = []
+    credentials = getCredentials()
 
     # queries yahoo finance for ticker passed, keeps track of bad pulls (ie. ticker lacking appropiate data)
-    with alive_bar(
-        len(list_of_ticker_symbols), bar="filling", spinner="dots_waves2"
-    ) as bar:
-        for individual_ticker_symbol in list_of_ticker_symbols:
-            try:
-                individual_ticker_symbol_data = web.get_quote_yahoo(
-                    individual_ticker_symbol
-                )
-                fundamental_stock_data.append(individual_ticker_symbol_data)
-                bar()
-            except:
-                bad_ticker_symbols.append(individual_ticker_symbol)
-                bar()
-
-    # culls tickers of those lacking appropiate data
-    for individual_bad_ticker_symbol in bad_ticker_symbols:
-        list_of_ticker_symbols.remove(individual_bad_ticker_symbol)
-
-    #### ** DEBUG **
-    # print("AFTER DELETE: ", list_of_ticker_symbols)
+    # TODO: Figure out why 'quote()' throws an error when it pulls on a "bad" ticker
+    #        might make sense to change this to only do one ticker at a time, see old commit
+    fundamental_stock_data = quote(list_of_ticker_symbols, credentials)
 
     # adds index column, inserts ticker symbols into dataframe, resets index
-    df = pd.concat(fundamental_stock_data, axis=0)
-    df.insert(0, "tickerSymbol", list_of_ticker_symbols)
-    df.index = range(0, len(list_of_ticker_symbols), 1)
+    df_fundamental_stock_data = pd.DataFrame(fundamental_stock_data)
+    df = pd.concat([df_fundamental_stock_data], axis=0)
+    # df.insert(0, "tickerSymbol", list_of_ticker_symbols)
+    # df.index = range(0, len(list_of_ticker_symbols), 1)
 
     # replaces missing data with NaN
     for key in df.keys():
@@ -108,8 +112,8 @@ def get_fundamental_stock_data_by_exchange(exchange):
     df.to_csv(database_csv_filepath, encoding="utf-8", index=False)
     print("Data Frame Successfully saved to:", database_csv_filepath)
 
-    #### ** DEBUG **
-    # display(df)
+    # # ** DEBUG **
+    display(df)
 
 
 ####################################################################
