@@ -84,7 +84,7 @@ def get_fundamental_stock_data_by_exchange(exchange):
     # database_csv_filepath = "fundamental_stock_data" + "_" + exchange + ".csv"
 
     #### FOR TESTING PURPOSES TO AVOID EXCEEDING API CALLS FOR eodhistoricaldata.com
-    raw_exchange_data = pd.read_csv(util_dir_path + "testing_data/nyse_test_short.csv")
+    raw_exchange_data = pd.read_csv(util_dir_path + "testing_data/nyse_test_total.csv")
     database_csv_filepath = "testing_fundamental_stock_data" + "_" + exchange + ".csv"
 
     list_of_ticker_symbols = list(raw_exchange_data["Code"])
@@ -101,8 +101,6 @@ def get_fundamental_stock_data_by_exchange(exchange):
     # adds index column, inserts ticker symbols into dataframe, resets index
     df_fundamental_stock_data = pd.DataFrame(fundamental_stock_data)
     df = pd.concat([df_fundamental_stock_data], axis=0)
-    # df.insert(0, "tickerSymbol", list_of_ticker_symbols)
-    # df.index = range(0, len(list_of_ticker_symbols), 1)
 
     # replaces missing data with NaN
     for key in df.keys():

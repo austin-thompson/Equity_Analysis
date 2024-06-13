@@ -62,7 +62,7 @@ def execute():
     user_defined_risk_dist = [0.6, 0.25, 0.15]
 
     # make this user defined
-    user_defined_budget = 7590
+    user_defined_budget = 10000
 
     print(
         "---------------------------------------------------------------------------------------------"
